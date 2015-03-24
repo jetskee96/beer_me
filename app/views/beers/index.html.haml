@@ -1,0 +1,10 @@
+%h1 Beer Me
+#beers.transitions-enabled
+  .box.panel.panel-default
+  - @beers.each do |beer|
+	    %li= link_to (image_tag beer.image.url(:medium)), beer 
+      = pluralize beer.reputation_for(:votes).to_i, "vote"
+      %h2= link_to beer.title, beer
+  %p.user
+    Submitted by
+    = beer.user.username

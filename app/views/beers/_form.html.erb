@@ -1,0 +1,30 @@
+<%= form_for @beer, :url => beers_path, :html => { :multipart => true } do |f| %>
+  <% if @beer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@beer.errors.count, "error") %> prohibited this beer from being saved:</h2>
+
+      <ul>
+      <% @beer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :content %><br>
+    <%= f.text_area :content %>
+  </div>
+
+  <div class="field">
+    <%= f.label :image %><br>
+    <%= f.file_field :image %>
+  </div>
+  <div class="form-group" %>
+    <%= f.submit "Beer Me", class: "btn btn-lg btn-primary" %>
+  </div>
+<% end %>
